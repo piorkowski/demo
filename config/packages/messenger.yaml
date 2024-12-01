@@ -19,6 +19,18 @@ framework:
 
         buses:
             messenger.bus.default: []
+            command.bus.taxes:
+                middleware:
+                    - validation
+            query.bus.taxes:
+                middleware:
+                    - validation
+
+        serializer:
+            default_serializer: messenger.transport.symfony_serializer
+            symfony_serializer:
+                format: json
+                context: { }
 
         routing:
             Symfony\Component\Mailer\Messenger\SendEmailMessage: async
