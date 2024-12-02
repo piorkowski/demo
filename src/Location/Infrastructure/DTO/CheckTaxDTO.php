@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tax\DTO;
+namespace App\Location\Infrastructure\DTO;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

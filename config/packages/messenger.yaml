@@ -19,10 +19,10 @@ framework:
 
         buses:
             messenger.bus.default: []
-            command.bus.taxes:
+            command.bus.default:
                 middleware:
                     - validation
-            query.bus.taxes:
+            query.bus.default:
                 middleware:
                     - validation
 

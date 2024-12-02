@@ -1,23 +1,42 @@
 <?php
 declare(strict_types=1);
 
-
 namespace App\External\Shared\Gateway;
 
-
 use App\External\Shared\Request\IntegrationRequestInterface;
-use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class Gateway
+readonly class Gateway implements GatewayInterface
 {
     public function __construct(
-        HttpClient $httpClient,
+        private HttpClientInterface $httpClient,
     )
     {
     }
 
-    public function sendRequest(IntegrationRequestInterface $request)
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    public function sendRequest(IntegrationRequestInterface $request): array
     {
+        $response = $this->httpClient->request(
+            $request->getMethod(),
+            $request->getUrl(),
+            [
+                'headers' => $request->getHeaders(),
+                'json' => $request->getBody(),
+            ]
+        );
 
+        return $response->toArray();
     }
 }

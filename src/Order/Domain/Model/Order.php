@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Order\Domain\Model;
 
-
 use App\Order\Domain\Enum\OrderStatus;
 use App\Shared\Model\DomainEventModel;
 
@@ -17,6 +16,7 @@ class Order extends DomainEventModel
         public array $products,
         public \DateTimeInterface $createdAt,
         public \DateTimeInterface $updatedAt,
+        public string $visitor
     )
     {
     }

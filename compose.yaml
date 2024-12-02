@@ -45,11 +45,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-app}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
       POSTGRES_USER: ${POSTGRES_USER:-app}
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB:-app} -U ${POSTGRES_USER:-app} || exit 1"]
-      timeout: 5s
-      retries: 5
-      start_period: 60s
     volumes:
       - ./docker/postgres/data:/var/lib/postgresql/data:rw
     ports:

@@ -6,9 +6,9 @@ namespace App\UI\Action;
 
 
 use App\Order\Application\Command\CreateOrder\CreateOrderCommand;
+use App\Order\Infrastructure\DTO\CreateOrderDTO;
 use App\Order\Infrastructure\Exception\CannotCreateOrderException;
 use App\Shared\Command\CommandBusInterface;
-use App\UI\DTO\CreateOrderDTO;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
