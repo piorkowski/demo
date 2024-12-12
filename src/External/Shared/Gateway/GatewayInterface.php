@@ -9,5 +9,5 @@ use App\External\Shared\Request\IntegrationRequestInterface;
 
 interface GatewayInterface
 {
-        public function sendRequest(IntegrationRequestInterface $request): array;
+    public function sendRequest(IntegrationRequestInterface $request): array;
 }

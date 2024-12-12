@@ -12,18 +12,11 @@ class WeatherApiRequest extends AbstractIntegrationRequest implements Integratio
 {
     private const URL = 'https://api.weatherapi.com/v1/forecast.json?key={key}&q={location}&days=1&aqi=yes&alerts=yes';
 
-    private string $location;
-
     public function __construct(
-        #[Autowire(env: 'string:WEATHER_API_KEY')]
-        private readonly string $key,
+        private string $key,
+        private string $location,
     )
     {
-    }
-
-    public function __invoke(string $location): array
-    {
-        $this->location = $location;
     }
 
     public function getUrl(): string

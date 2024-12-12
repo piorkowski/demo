@@ -5,22 +5,22 @@ namespace App\External\Weather\Service;
 
 use App\External\Weather\DTO\WeatherDTO;
 
-class WeatherMetricUnitsService extends AbstractWeatherService implements WeatherServiceInterface
+class WeatherMetricUnitsService extends AbstractWeatherService
 {
     protected function buildFromResponse(array $response): WeatherDTO
     {
         return new WeatherDTO(
             date: $response['current']['last_updated'],
             condition: $response['current']['condition']['text'],
-            temperature: $response['current']['temp_c'],
-            wind: $response['current']['wind_kph'],
-            humidity: $response['current']['humidity'],
-            cloud: $response['current']['cloud'],
-            uv: $response['current']['uv'],
-            maxTemperature: $response['current']['forecast']['forecastday']['maxtemp_c'],
-            minTemperature: $response['current']['forecast']['forecastday']['mintemp_c'],
-            totalSnow: $response['current']['forecast']['forecastday']['totalsnow_cm'],
-            totalPrecipitation: $response['current']['forecast']['forecastday']['totalprecip_mm'],
+            temperature: (string)$response['current']['temp_c'],
+            wind: (string)$response['current']['wind_kph'],
+            humidity: (string)$response['current']['humidity'],
+            cloud: (string)$response['current']['cloud'],
+            uv: (string)$response['current']['uv'],
+            maxTemperature: (string)$response['forecast']['forecastday'][0]['day']['maxtemp_c'],
+            minTemperature: (string)$response['forecast']['forecastday'][0]['day']['mintemp_c'],
+            totalSnow: (string)$response['forecast']['forecastday'][0]['day']['totalsnow_cm'],
+            totalPrecipitation: (string)$response['forecast']['forecastday'][0]['day']['totalprecip_mm'],
 
         );
     }
