@@ -8,9 +8,10 @@ namespace App\External\Translation\DTO;
 final readonly class TranslationInputDTO
 {
     public function __construct(
+        public string $topic,
         public string $message,
-        public ?string $sourceLanguage = null,
         public string $targetLanguage,
+        public ?string $sourceLanguage = null,
     )
     {
     }

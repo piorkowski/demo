@@ -11,13 +11,11 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 abstract class AbstractDeeplRequest extends AbstractIntegrationRequest implements IntegrationRequestInterface
 {
     public function __construct(
-        #[Autowire('%env(DEEPL_API_KEY)%')]
         protected readonly string $apiKey,
-        #[Autowire('%env(DEEPL_API_PROD)%')]
         protected readonly bool $apiProd,
-        protected readonly TranslationInputDTO $translationInput,
-        protected readonly string $model,
-        protected readonly string $formality,
+        protected readonly ?TranslationInputDTO $translationInput,
+        protected readonly ?string $model,
+        protected readonly ?string $formality,
     )
     {
 
