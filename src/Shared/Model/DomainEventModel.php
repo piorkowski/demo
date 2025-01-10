@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\Model;
 
 
-use App\Domain\Event\DomainEventInterface;
+use App\Shared\Event\DomainEventInterface;
 
 class DomainEventModel
 {

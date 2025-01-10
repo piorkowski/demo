@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Event\DomainEvent;
 
-use App\Domain\Event\DomainEventDispatcherInterface;
-use App\Domain\Event\DomainEventInterface;
+use App\Shared\Event\DomainEventDispatcherInterface;
+use App\Shared\Event\DomainEventInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 readonly class DomainEventDispatcher implements DomainEventDispatcherInterface
